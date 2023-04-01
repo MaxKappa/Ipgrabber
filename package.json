@@ -1,0 +1,8 @@
+{
+    "name":"ipgrabber",
+    "version":"1.0.0",
+    "main":"ipgrabber.js",
+    "scripts": {
+            "start":"node ipgrabber.js"
+    }
+}
