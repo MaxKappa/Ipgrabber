@@ -1,12 +1,12 @@
 version: '3'
 services:
   ipgrabber:
-    image: c9e5af9498a2
+    build: .
     ports:
       - "80:80"
-    command: ["npm", "start"]
     logging:
       driver: json-file
       options:
         max-size: 10m
         max-file: 3
+
