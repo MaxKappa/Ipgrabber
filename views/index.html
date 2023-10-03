@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>IP Grabber</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+
+</head>
+    <body>
+        <div id="map"></div>
+        <div id="content">
+          <!-- parse json from server -->
+          <h1>Your information</h1>
+          <p><strong>IP:</strong> <%= ip %></p>
+          <p><strong>City:</strong> <%= city %></p>
+          <p><strong>Region:</strong> <%= region %></p>
+          <p><strong>Country:</strong> <%= country %></p>
+          <p><strong>Latitude:</strong> <%= latitude %></p>
+          <p><strong>Longitude:</strong> <%= longitude %></p>
+          <p><strong>ORG:</strong> <%= org %></p>
+          <p><strong>Postal:</strong> <%= postal %></p>
+          <p><strong>Timezone:</strong> <%= timezone %></p>
+          <p><strong>UserAgent:</strong> <%= useragent %></p>
+          
+        </div>
+  </body>
+  <script>
+    var latitude = <%= latitude %>;
+    var longitude = <%= longitude %>;
+    let map;
+
+  function initMap() {
+    const mapOptions = {
+      zoom: 8,
+      center: { lat: latitude, lng: longitude },
+    };
+
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+  const marker = new google.maps.Marker({
+    // The below line is equivalent to writing:
+    // position: new google.maps.LatLng(-34.397, 150.644)
+    position: { lat: latitude, lng: longitude },
+    map: map,
+  });
+  // You can use a LatLng literal in place of a google.maps.LatLng object when
+  // creating the Marker object. Once the Marker object is instantiated, its
+  // position will be available as a google.maps.LatLng object. In this case,
+  // we retrieve the marker's position using the
+  // google.maps.LatLng.getPosition() method.
+  const infowindow = new google.maps.InfoWindow({
+    content: "<p>Marker Location:" + marker.getPosition() + "</p>",
+  });
+
+  google.maps.event.addListener(marker, "click", () => {
+    infowindow.open(map, marker);
+  });
+}
+
+window.initMap = initMap;
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRz1qHddGb1UkcQrsiDcGzvQ18ExlbfCg&callback=initMap"></script>    
+</html>
