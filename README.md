@@ -6,3 +6,6 @@ It run on port 80, you can change in [docker-compose.yml](docker-compose.yml)
 1. `git clone https://github.com/MaxKappa/Ipgrabber.git`
 2. Paste your personal token key (from IPinfo.io) in [ipgrabber.js](ipgrabber.js) `const ipinfo = new IPinfoWrapper("TOKEN");`
 3. `docker compose up --build -d`
+
+## Demo
+You can try the application on [ip.spidernetwork.it](https://ip.spidernetwork.it)
