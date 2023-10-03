@@ -10,6 +10,7 @@ COPY package*.json ./
 # Installa le dipendenze dell'applicazione
 RUN npm install express
 RUN npm install node-ipinfo
+RUN npm install ejs
 
 # Copia i file dell'applicazione nella directory di lavoro
 COPY . .
